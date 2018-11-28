@@ -10,60 +10,60 @@ class App extends Component {
 
   constructor(props) {
     super(props)
-  
+
     this.state = {
-       escolhaUsuario : '',
-       escolhaComputador : '',
-       resultado : '',
-       vitorias: 0,
-       empates: 0,
-       derrotas: 0      
+      escolhaUsuario: '',
+      escolhaComputador: '',
+      resultado: '',
+      vitorias: 0,
+      empates: 0,
+      derrotas: 0
     }
 
   }
 
-  jokenpo(escolhaUsuario){
-   let geraNumeroAleatorio = Math.floor(Math.random() * 3);
+  jokenpo(escolhaUsuario) {
+    let geraNumeroAleatorio = Math.floor(Math.random() * 3);
 
-   let escolhaComputador = '';
-   let vitorias = this.state.vitorias;
-   let empates = this.state.empates;
-   let derrotas = this.state.derrotas;
-   let resultado = '';
- 
-  
+    let escolhaComputador = '';
+    let vitorias = this.state.vitorias;
+    let empates = this.state.empates;
+    let derrotas = this.state.derrotas;
+    let resultado = '';
 
 
 
-   switch (geraNumeroAleatorio) {
-     case 0: escolhaComputador = 'Pedra'; break;
-     case 1: escolhaComputador = 'Papel'; break;
-     case 2: escolhaComputador = 'Tesoura'; break;
-   }
 
 
-  
-   //Caso o computador escolha Pedra
-   if (escolhaComputador == 'Pedra') {
-     if (escolhaUsuario == 'Pedra') {
-       resultado = 'Empate'; 
-       empates += 1;     
-     }
-     if (escolhaUsuario == 'Papel') {
-       resultado = 'Você Ganhou!';
-       vitorias += 1;
-     }
-     if (escolhaUsuario == 'Tesoura') {
-       resultado = 'Você perdeu!';
-       derrotas += 1;
-     }
-   }
-    
-   //Caso o computador escolha Papel
+    switch (geraNumeroAleatorio) {
+      case 0: escolhaComputador = 'Pedra'; break;
+      case 1: escolhaComputador = 'Papel'; break;
+      case 2: escolhaComputador = 'Tesoura'; break;
+    }
+
+
+
+    //Caso o computador escolha Pedra
+    if (escolhaComputador == 'Pedra') {
+      if (escolhaUsuario == 'Pedra') {
+        resultado = 'Empate';
+        empates += 1;
+      }
+      if (escolhaUsuario == 'Papel') {
+        resultado = 'Você Ganhou!';
+        vitorias += 1;
+      }
+      if (escolhaUsuario == 'Tesoura') {
+        resultado = 'Você perdeu!';
+        derrotas += 1;
+      }
+    }
+
+    //Caso o computador escolha Papel
     if (escolhaComputador == 'Papel') {
       if (escolhaUsuario == 'Papel') {
-        resultado = 'Empate';    
-        empates += 1;    
+        resultado = 'Empate';
+        empates += 1;
       }
       if (escolhaUsuario == 'Tesoura') {
         resultado = 'Você Ganhou!';
@@ -78,8 +78,8 @@ class App extends Component {
     //Caso o computador escolha Tesoura
     if (escolhaComputador == 'Tesoura') {
       if (escolhaUsuario == 'Tesoura') {
-        resultado = 'Empate';  
-        empates += 1;          
+        resultado = 'Empate';
+        empates += 1;
       }
       if (escolhaUsuario == 'Pedra') {
         resultado = 'Você Ganhou!';
@@ -93,7 +93,7 @@ class App extends Component {
 
 
     this.setState({ escolhaUsuario, escolhaComputador, resultado, vitorias, derrotas, empates });//na esquerda fica a chave e na direita o valor
-  
+
   }
   resetar() {
     this.setState({
@@ -102,42 +102,42 @@ class App extends Component {
       derrotas: 0,
       resultado: '',
       escolhaComputador: '',
-      escolhaUsuario:'',
+      escolhaUsuario: '',
     });
   }
-  
+
   render() {
     return (
       <View styles={styles.total}>
-        <Topo></Topo>  
+        <Topo></Topo>
 
-      <View style={ styles.painelAcoes }>
-        <View style={ styles.btnEscolha }>
-         <Button title="Pedra" onPress={() => {this.jokenpo('Pedra')}} />
+        <View style={styles.painelAcoes}>
+          <View style={styles.btnEscolha}>
+            <Button title="Pedra" onPress={() => { this.jokenpo('Pedra') }} />
+          </View>
+          <View style={styles.btnEscolha}>
+            <Button title="Papel" onPress={() => { this.jokenpo('Papel') }} />
+          </View>
+          <View style={styles.btnEscolha}>
+            <Button title="Tesoura" onPress={() => { this.jokenpo('Tesoura') }} />
+          </View>
         </View>
-        <View style={ styles.btnEscolha }>
-          <Button title="Papel" onPress={() => {this.jokenpo('Papel')}} />
-        </View>        
-        <View style={ styles.btnEscolha }>
-          <Button title="Tesoura" onPress={() => {this.jokenpo('Tesoura')}} />  
-        </View>    
-      </View> 
 
-        <View style={ styles.palco } >          
+        <View style={styles.palco} >
 
           <Icone escolha={this.state.escolhaUsuario} jogador={'Você'}></Icone>
           <Icone escolha={this.state.escolhaComputador} jogador={'Computador'}></Icone>
-          <Text style={ styles.txtResultado }> {this.state.resultado} </Text>        
-          
-        </View> 
+          <Text style={styles.txtResultado}> {this.state.resultado} </Text>
+
+        </View>
         <View style={styles.contadores}>
-            <Text style={styles.contadoresV}>{this.state.vitorias}</Text>
-            <Text style={styles.contadoresE}>{this.state.empates}</Text>
-            <Text style={styles.contadoresD}>{this.state.derrotas}</Text>
-          </View>
-          <View  style={ styles.btnReset }>
-            <Button title='RESET' onPress={() => this.resetar()}  color="#2f3542"/>
-          </View> 
+          <Text style={styles.contadoresV}>{this.state.vitorias}</Text>
+          <Text style={styles.contadoresE}>{this.state.empates}</Text>
+          <Text style={styles.contadoresD}>{this.state.derrotas}</Text>
+        </View>
+        <View style={styles.btnReset}>
+          <Button title='RESET' onPress={() => this.resetar()} color="#2f3542" />
+        </View>
 
       </View>
     );
@@ -148,51 +148,51 @@ class App extends Component {
 
 
 const styles = StyleSheet.create({
-  total:{
+  total: {
     backgroundColor: '#FFF',
   },
-  painelAcoes:{
+  painelAcoes: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 10,
-   
+
   },
-  btnEscolha:{
-    width: 110,   
+  btnEscolha: {
+    width: 110,
     paddingHorizontal: 10,
     paddingVertical: 20,
   },
-  contadores:{
+  contadores: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 10
   },
-  contadoresV:{
+  contadoresV: {
     backgroundColor: 'green',
     marginRight: 5,
     fontWeight: 'bold',
     fontSize: 15,
     padding: 8,
-    color:'#FFF'
+    color: '#FFF'
   },
-  contadoresE:{
+  contadoresE: {
     backgroundColor: 'gray',
     marginRight: 5,
     fontWeight: 'bold',
-    fontSize:15,
+    fontSize: 15,
     padding: 8,
-    color:'#FFF'
+    color: '#FFF'
   },
-  contadoresD:{
+  contadoresD: {
     backgroundColor: 'red',
     fontWeight: 'bold',
-    fontSize:15,
+    fontSize: 15,
     padding: 8,
-    color:'#FFF'
+    color: '#FFF'
   },
-  btnReset:{
+  btnReset: {
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -200,12 +200,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 5,    
+    marginTop: 5,
   },
-  txtResultado:{
-    fontSize:25,
+  txtResultado: {
+    fontSize: 25,
     fontWeight: 'bold',
-    color:'#4CAF50',
+    color: '#4CAF50',
   },
 });
 
