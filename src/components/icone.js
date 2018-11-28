@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, StyleSheet } from 'react-native';
 
 
 class Icone extends Component{
@@ -38,5 +38,19 @@ class Icone extends Component{
         }   
     }
   }
+
+  const styles = StyleSheet.create({
+ 
+  
+    icone:{
+      alignItems: 'center',
+      marginBottom: 20,
+    
+    },
+    txtJogador:{
+      fontSize: 18
+    }
+
+  });
   
   export default Icone;

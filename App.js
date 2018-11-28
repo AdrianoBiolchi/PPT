@@ -200,22 +200,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 5,
-    
+    marginTop: 5,    
   },
   txtResultado:{
     fontSize:25,
     fontWeight: 'bold',
     color:'#4CAF50',
   },
-  icone:{
-    alignItems: 'center',
-    marginBottom: 20,
-  
-  },
-  txtJogador:{
-    fontSize: 18
-  }
 });
 
 //make this component available to the app
